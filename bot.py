@@ -30,7 +30,7 @@ async def on_ready():
     await bot.add_cog(DailyVerses(bot)) 
     await bot.add_cog(Prayer(bot))
     await bot.add_cog(Trivia(bot))
-    await bot.remove_command('help')
+    bot.remove_command('help')
     await bot.add_cog(Help(bot))
 
 bot.run('bot-token')
