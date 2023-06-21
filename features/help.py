@@ -4,12 +4,12 @@ class Help(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.group()
+    @commands.group(invoke_without_command=True)
     async def flowee(self, ctx):
         if ctx.invoked_subcommand is None:
             await ctx.send("Invalid flowee command passed... Send **!flowee help** and I help you!")
 
-    @commands.command()
+    @flowee.command()
     async def help(self, ctx):
         help_message = """
         **Hello!**
