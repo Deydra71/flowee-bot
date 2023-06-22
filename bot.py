@@ -4,6 +4,7 @@ from features.daily_verse import DailyVerses
 from features.prayer import Prayer
 from features.trivia import Trivia
 from features.help import Help
+from features.resources import Resources
 
 value = 17998329146480
 intents = discord.Intents.all()
@@ -33,5 +34,6 @@ async def on_ready():
     await bot.add_cog(Trivia(bot))
     bot.remove_command('help')
     await bot.add_cog(Help(bot))
+    await bot.add_cog(Resources(bot))
 
 bot.run('bot-token')
