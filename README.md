@@ -19,3 +19,6 @@ The creation of FloweeBot would not have been possible without the invaluable co
 ## *Work in Progress* 
 
 Please note that FloweeBot is still being developed and improved upon. This is my first bot creation. If you encounter any issues or have suggestions for improvements, feel free to contact me :heart:
+
+## *TODO*
+Create YAML/JSON file to be filled with user-individual variables, update source files accordingly
