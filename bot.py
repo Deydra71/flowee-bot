@@ -27,7 +27,8 @@ async def on_message(message):
 @bot.event
 async def on_ready():
     print(f'We have logged in as {bot.user}')
-    await bot.add_cog(DailyVerses(bot)) 
+    await bot.change_presence(activity=discord.Game(name="!flowee help"))
+    await bot.add_cog(DailyVerses(bot))
     await bot.add_cog(Prayer(bot))
     await bot.add_cog(Trivia(bot))
     bot.remove_command('help')
