@@ -4,6 +4,7 @@ from features.daily_verse import DailyVerses
 from features.prayer import Prayer
 from features.trivia import Trivia
 from features.help import Help
+from features.resources import Resources
 
 value = 17998329146480
 intents = discord.Intents.all()
@@ -27,10 +28,12 @@ async def on_message(message):
 @bot.event
 async def on_ready():
     print(f'We have logged in as {bot.user}')
-    await bot.add_cog(DailyVerses(bot)) 
+    await bot.change_presence(activity=discord.Game(name="!flowee help"))
+    await bot.add_cog(DailyVerses(bot))
     await bot.add_cog(Prayer(bot))
     await bot.add_cog(Trivia(bot))
     bot.remove_command('help')
     await bot.add_cog(Help(bot))
+    await bot.add_cog(Resources(bot))
 
 bot.run('bot-token')

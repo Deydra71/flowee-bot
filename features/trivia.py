@@ -21,11 +21,11 @@ class Trivia(commands.Cog):
         if sorted_scores:
             winners = [player for player, score in sorted_scores if score == sorted_scores[0][1]]
             if len(winners) == 1:
-                message += f'Congratulations {winners[0].mention}! You won!'
+                message += f':trophy: Congratulations {winners[0].mention}! You won! :trophy:'
             else:
-                message += 'Congratulations ' + ', '.join(player.mention for player in winners) + '! You all tied for first place!'
+                message += ':trophy: Congratulations ' + ', '.join(player.mention for player in winners) + '! You all tied for first place! :trophy:'
         else:
-            message += 'No one got any points. Better luck next time!'
+            message += ':four_leaf_clover: No one got any points. Better luck next time! :four_leaf_clover:'
         await ctx.send(message)
 
     def check_answer(self, answers):
