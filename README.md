@@ -1,4 +1,3 @@
-# [![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
 # **FloweeBot** :cherry_blossom:
 
 ## *A Little Companion on your Journey of Faith*
@@ -26,6 +25,7 @@ Create YAML/JSON file to be filled with user-individual variables, update source
 
 ## *LICENSE*
 FloweeBot © 2023 by Veronika Fisarova, by the username of Deydra71, is licensed under Attribution-NonCommercial-ShareAlike 4.0 International 
+
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
 
 [cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
