@@ -46,6 +46,6 @@ class DailyVerses(commands.Cog):
     async def before_send_daily_verse(self):
         now = datetime.now()
         future = datetime.now().replace(hour=8)
-        if now.hour >= 8:   # if it's past 8 AM, schedule for next day
+        if now.hour >= 11:   # if it's past 11 AM, schedule for next day
             future += timedelta(days=1)
         await discord.utils.sleep_until(future)  # wait until the specified time

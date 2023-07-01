@@ -26,10 +26,15 @@ class Help(commands.Cog):
         \t\t gratitude, wisdom, love, patience, courage, comfort, faith, joy, hope, serenity, purity.
         \t:bulb: Example: `!prayer guidance`.
 
+        :dove: **Prayer List**: You can join or leave the prayer list. When you are in the prayer list, your username will be included in our daily prayers.
+        \t To join the prayer list, use the command `!join_prayer_list`.
+        \t To leave the prayer list, use the command `!leave_prayer_list`.
+
+        :earth_africa: **Additional Resources**: If you are looking for resources for your Walk in Christ, command me with `!resources`, and I will print them for you!  :white_heart:
+
         :trophy: **Bible Trivia Games**: I orchestrate Bible Trivia games! To start a game, just type `!trivia` followed by the level (1, 2, or 3) and the players' @usernames. 
-        \t:bulb: Example: `!trivia 1 @user1 @user2`.
+        \t:bulb: Example: `!trivia 1 @user1 @user2`. Even one player alone can attend!
         \t:grey_exclamation: Please note that you can only start a Bible Trivia game in a dedicated channel!
         """
-
 
         await ctx.send(help_message)
