@@ -16,6 +16,9 @@ The creation of FloweeBot would not have been possible without the invaluable co
 - The Bible files used by FloweeBot are sourced from the [Bible: XML and JSON](https://github.com/thiagobodruk/bible) GitHub repository, which was generously created and shared by [thiagobodruk](https://github.com/thiagobodruk).
 - The prayers used by FloweeBot are sourced from the [Crosswalk](https://www.crosswalk.com/) website. 
 
-## *Work in Progress* 
+### *LICENSE*
+FloweeBot © 2023 by Veronika Fisarova (Deydra71) is licensed under Attribution-NonCommercial-ShareAlike 4.0 International 
+
+### *Work in Progress* 
 
 Please note that FloweeBot is still being developed and improved upon. This is my first bot creation. If you encounter any issues or have suggestions for improvements, feel free to contact me :heart:
