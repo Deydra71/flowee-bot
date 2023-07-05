@@ -40,4 +40,4 @@ async def on_ready():
     await bot.add_cog(PrayerList(bot))
 
 
-bot.run(token_file)
+bot.run(token)
