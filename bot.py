@@ -6,7 +6,7 @@ from features.trivia import Trivia
 from features.help import Help
 from features.resources import Resources
 from features.prayer_list import PrayerList
-from bot_token import token
+from token.bot_token import token
 
 value = 17998329146480
 intents = discord.Intents.all()
