@@ -33,7 +33,7 @@ class Help(commands.Cog):
         :earth_africa: **Additional Resources**: If you are looking for resources for your Walk in Christ, command me with `!resources`, and I will print them for you!  :white_heart:
 
         :trophy: **Bible Trivia Games**: I orchestrate Bible Trivia games! To start a game, just type `!trivia` followed by the level (1, 2, or 3) and the players' @usernames. 
-        \t:bulb: Example: `!trivia 1 @user1 @user2`. Even one player alone can attend!
+        \t:bulb: Example: `!trivia 1 @user1 @user2`. Even one player alone can attend! Simply write the command to start the game and follow instructions.
         \t:grey_exclamation: Please note that you can only start a Bible Trivia game in a dedicated channel!
         """
 

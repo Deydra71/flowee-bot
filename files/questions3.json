@@ -3,8 +3,7 @@
         "Aaron"
     ],
     "How old was Methuselah when he died?": [
-        "969",
-        "Nine hundred sixty-nine"
+        "969"
     ],
     "Who was the father of John the Baptist?": [
         "Zechariah"
@@ -22,7 +21,7 @@
         "Samuel"
     ],
     "What is the name of the sea where Jesus calmed the storm?": [
-        "Sea of Galilee"
+        "Sea of Galilee", "Galilee"
     ],
     "Who was the judge of Israel who vowed to sacrifice the first thing that came out of his house?": [
         "Jephthah"
@@ -38,7 +37,7 @@
         "Donkey"
     ],
     "In the parable of the prodigal son, what job did the son end up doing after he spent all his inheritance?": [
-        "Pig keeper"
+        "Pig keeper", "Keeper of pig", "Keeper of pigs"
     ],
     "What was Jacob's name changed to?": [
         "Israel"
@@ -76,7 +75,7 @@
         "Zacchaeus"
     ],
     "What was the name of the sea where Jesus walked on the water?": [
-        "Sea of Galilee"
+        "Sea of Galilee", "Sea of Galilee", "Galilee"
     ],
     "What is the common name given to the first four books of the New Testament?": [
         "The Gospels"
@@ -94,9 +93,6 @@
     "What city was the prophet Jonah sent to prophesy against?": [
         "Nineveh"
     ],
-    "What miracle did Elisha perform with a borrowed axe?": [
-        "He made the axe head float"
-    ],
     "How many times did Jesus predict His death and resurrection?": [
         "Three",
         "3"
@@ -108,7 +104,7 @@
         "Do unto others as you would have them do unto you"
     ],
     "Who recognized Jesus as the Christ when he was still in his mother's womb?": [
-        "John the Baptist"
+        "John the Baptist", "John", "John Baptist", "Baptist John"
     ],
     "Who was the first Christian martyr?": [
         "Stephen"
