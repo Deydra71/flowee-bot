@@ -4,7 +4,7 @@ import random
 import json
 import asyncio
 
-TRIVIA_CHANNEL_ID = <channel_id>  # Please replace with your designated channel ID
+TRIVIA_CHANNEL_ID = 1120358578256093385  # Please replace with your designated channel ID
 
 class Trivia(commands.Cog):
     def __init__(self, bot):
@@ -76,6 +76,6 @@ class Trivia(commands.Cog):
             if not correct:
                 await ctx.send('Time\'s up!')
                 await ctx.send(f'The correct answer(s) is/are: {", ".join(answers)}')
-            await ctx.send('-----------------------------------------------------------------')
+            await ctx.send('-----------------------------------------------------------------')  # Line for separation
             i += 1
         await self.print_scores(ctx)

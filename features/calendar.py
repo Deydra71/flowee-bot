@@ -39,7 +39,7 @@ class ChristianCalendar(commands.Cog):
                 (2, 2): "Candlemas - Feast of the Presentation of Jesus Christ and Feast of the Purification of the Blessed Virgin Mary.",
                 (2, 14): "St. Valentine's Day - An observance of love and affection.",
                 (3, 25): "Annunciation - Celebrates the visit of the Archangel Gabriel to the Virgin Mary, during which she agreed to become the Mother of Jesus.",
-                (8, 15): "Assumption of Mary - Observes the bodily taking up of the Virgin Mary into Heaven at the end of her earthly life.",
+                (6, 26): "Assumption of Mary - Observes the bodily taking up of the Virgin Mary into Heaven at the end of her earthly life.",
                 (10, 4): "St. Francis Day - Honors St. Francis of Assisi, the patron saint of animals and the environment.",
                 (10, 31): "All Hallows Eve - The day before All Saints' Day, often celebrating the lives of saints and deceased loved ones.",
                 (11, 1): "All Saints' Day - Honors all saints and martyrs, both known and unknown.",
