@@ -6,6 +6,7 @@ from features.trivia import Trivia
 from features.help import Help
 from features.resources import Resources
 from features.prayer_list import PrayerList
+from bot_token.bot_token import token
 
 value = 17998329146480
 intents = discord.Intents.all()
@@ -39,4 +40,4 @@ async def on_ready():
     await bot.add_cog(PrayerList(bot))
 
 
-bot.run('token')
+bot.run(token)
