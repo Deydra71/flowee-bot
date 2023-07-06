@@ -28,7 +28,6 @@ class DailyVerses(commands.Cog):
         chapter_number = random.choice(range(len(book['chapters'])))
         chapter = book['chapters'][chapter_number]
         verse = random.choice(chapter)
-        # Return formatted verse
         return f"{book['name']} {chapter_number+1}:{chapter.index(verse)+1}\n\n*{verse}*"
 
     @commands.command()
@@ -48,4 +47,4 @@ class DailyVerses(commands.Cog):
         future = datetime.now().replace(hour=8)
         if now.hour >= 11:   # if it's past 11 AM, schedule for next day
             future += timedelta(days=1)
-        await discord.utils.sleep_until(future)  # wait until the specified time
+        await discord.utils.sleep_until(future)
