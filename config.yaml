@@ -1,0 +1,7 @@
+# config.yaml
+verses: "files/en_kjv.json"
+prayers: "files/prayers.json"
+trivia_level_1: "files/questions1.json"
+trivia_level_2: "files/questions2.json"
+trivia_level_3: "files/questions3.json"
+trivia_channel_id: 1120358578256093385

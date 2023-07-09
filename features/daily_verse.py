@@ -6,17 +6,15 @@ from datetime import datetime, timedelta
 
 class DailyVerses(commands.Cog):
 
-    def __init__(self, bot):
+    def __init__(self, bot, config):
         self.bot = bot
+        self.config = config
         self.load_verses()
         self.send_daily_verse.start()
 
-    def cog_unload(self):
-        self.send_daily_verse.cancel()
-
     def load_verses(self):
         try:
-            with open('files/en_kjv.json', 'r', encoding='utf-8-sig') as f:
+            with open(self.config['verses'], 'r', encoding='utf-8-sig') as f:
                 self.books = json.load(f)
         except FileNotFoundError:
             print('File not found')

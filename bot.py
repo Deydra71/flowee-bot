@@ -1,4 +1,5 @@
 import discord
+import yaml
 from discord.ext import commands
 from features.daily_verse import DailyVerses
 from features.prayer import Prayer
@@ -10,6 +11,9 @@ from bot_token.bot_token import token
 
 value = 17998329146480
 intents = discord.Intents.all()
+
+with open("config.yaml", 'r') as stream:
+    config = yaml.safe_load(stream)
 
 for flag, bit in intents.VALID_FLAGS.items():
     if value & (1 << bit):
@@ -31,9 +35,9 @@ async def on_message(message):
 async def on_ready():
     print(f'We have logged in as {bot.user}')
     await bot.change_presence(activity=discord.Game(name="!flowee help"))
-    await bot.add_cog(DailyVerses(bot)) 
-    await bot.add_cog(Prayer(bot))
-    await bot.add_cog(Trivia(bot))
+    await bot.add_cog(DailyVerses(bot, config)) 
+    await bot.add_cog(Prayer(bot, config))
+    await bot.add_cog(Trivia(bot, config))
     bot.remove_command('help')
     await bot.add_cog(Help(bot))
     await bot.add_cog(Resources(bot))

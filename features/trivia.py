@@ -7,8 +7,9 @@ import asyncio
 TRIVIA_CHANNEL_ID = 1120358578256093385  # Please replace with your designated channel ID
 
 class Trivia(commands.Cog):
-    def __init__(self, bot):
+    def __init__(self, bot, config):
         self.bot = bot
+        self.config = config
         self.scores = {}
         self.players = []
         self.correct_messages = []
@@ -41,7 +42,7 @@ class Trivia(commands.Cog):
 
     @commands.command()
     async def trivia(self, ctx, level: int, *members: discord.Member):
-        if not ctx.message.channel.id == TRIVIA_CHANNEL_ID:
+        if not ctx.message.channel.id == self.config['trivia_channel_id']:
             await ctx.send('Please use the trivia channel to start a trivia game!')
             return
         self.players = list(members)
@@ -53,7 +54,7 @@ class Trivia(commands.Cog):
         await ctx.send('Starting trivia game in 5 seconds...')
         await asyncio.sleep(5)
 
-        with open(f'files/questions{level}.json', 'r') as f:
+        with open(self.config[f'trivia_level_{level}'], 'r') as f:
             questions = json.load(f)
         questions = {k: [x.lower() for x in v] for k, v in questions.items()}
         i = 0
@@ -76,6 +77,6 @@ class Trivia(commands.Cog):
             if not correct:
                 await ctx.send('Time\'s up!')
                 await ctx.send(f'The correct answer(s) is/are: {", ".join(answers)}')
-            await ctx.send('-----------------------------------------------------------------')  # Line for separation
+            await ctx.send('-----------------------------------------------------------------')
             i += 1
         await self.print_scores(ctx)
