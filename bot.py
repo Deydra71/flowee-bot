@@ -41,7 +41,7 @@ async def on_ready():
     bot.remove_command('help')
     await bot.add_cog(Help(bot))
     await bot.add_cog(Resources(bot))
-    await bot.add_cog(PrayerList(bot))
+    await bot.add_cog(PrayerList(bot, config))
 
 
 bot.run(token)

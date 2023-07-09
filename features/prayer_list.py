@@ -5,14 +5,12 @@ import asyncio
 import os
 from datetime import datetime, timedelta
 import random
-
-PRAYER_CHANNEL_ID = 1121786563995631666
-PRAYER_LIST_FILE = 'files/prayer_list.json' 
-PRAYER_TEXT_FILE = 'files/prayers_list.json'
+import yaml
 
 class PrayerList(commands.Cog):
-    def __init__(self, bot):
+    def __init__(self, bot, config):
         self.bot = bot
+        self.config = config
         self.load_prayer_list()
         self.load_prayer_text()
         self.send_prayer.start()
@@ -21,8 +19,9 @@ class PrayerList(commands.Cog):
         self.send_prayer.cancel()
 
     def load_prayer_list(self):
-        if os.path.exists(PRAYER_LIST_FILE):
-            with open(PRAYER_LIST_FILE, 'r') as f:
+        prayer_list_file = self.config['prayer_list']
+        if os.path.exists(prayer_list_file):
+            with open(prayer_list_file, 'r') as f:
                 data = f.read().strip()
                 if data:
                     self.prayer_list = json.loads(data)
@@ -33,12 +32,14 @@ class PrayerList(commands.Cog):
             self.prayer_list = []
 
     def save_prayer_list(self):
-        with open(PRAYER_LIST_FILE, 'w') as f:
+        prayer_list_file = self.config['prayer_list']
+        with open(prayer_list_file, 'w') as f:
             json.dump([user.id for user in self.prayer_list], f)
 
     def load_prayer_text(self):
-        if os.path.exists(PRAYER_TEXT_FILE):
-            with open(PRAYER_TEXT_FILE, 'r') as f:
+        prayer_text_file = self.config['prayer_text']
+        if os.path.exists(prayer_text_file):
+            with open(prayer_text_file, 'r') as f:
                 self.prayer_text = json.load(f)['prayers']
         self.unused_prayers = self.prayer_text.copy()
 
@@ -69,7 +70,8 @@ class PrayerList(commands.Cog):
 
     @tasks.loop(hours=24)
     async def send_prayer(self):
-        prayer_channel = self.bot.get_channel(PRAYER_CHANNEL_ID)
+        prayer_channel_id = self.config['prayer_channel_id']
+        prayer_channel = self.bot.get_channel(prayer_channel_id)
         prayer_for_today = self.get_prayer()
         if not self.prayer_list:
             await prayer_channel.send("There's currently no one on the prayer list. Let's all take a moment to send some positive thoughts and prayers for everyone in our community :pray: :heart:")
