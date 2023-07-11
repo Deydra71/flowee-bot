@@ -2,11 +2,11 @@
 
 ## *A Little Companion on your Journey of Faith*
 
-Welcome to **FloweeBot**, a Bible Discord bot for everyone who wishes to turn their heart towards God. Originally created for the [Efisio Cross](https://www.youtube.com/@EfisioCross) Discord server, FloweeBot is designed to provide daily verses, prayer generation, and Bible Trivia to aid in your spiritual journey. 
+Welcome to **FloweeBot**, a Bible Discord bot for everyone who wishes to turn their heart towards God. Originally created for the [Efisio Cross](https://www.youtube.com/@EfisioCross) Discord server, FloweeBot is designed to provide daily verses, prayer generation, and Bible Trivia, and more to aid in your spiritual journey. 
 
 ### **:musical_note: Efisio Cross :musical_note:**
 
-Efisio Cross is a talented artist who creates beautiful, heavenly music. Please take a moment to explore his work:
+Efisio Cross is a talented composer who creates beautiful neoclassical music. Please take a moment to explore his work:
 - Visit his [Website](https://efisiocross.com/)
 - Listen on [YouTube](https://www.youtube.com/@EfisioCross)
 
