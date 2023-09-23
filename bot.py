@@ -7,8 +7,8 @@ from features.trivia import Trivia
 from features.help import Help
 from features.resources import Resources
 from features.prayer_list import PrayerList
+from features.calendar import ChristianCalendar
 from bot_token.bot_token import token
-from calendar import ChristianCalendar
 
 value = 17998329146480
 intents = discord.Intents.all()
