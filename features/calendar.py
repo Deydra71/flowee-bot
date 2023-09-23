@@ -9,19 +9,28 @@ CHANNEL_ID = 1117869477669916803
 class ChristianCalendar(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.bot.loop.create_task(self.check_date())
+        self.task = self.bot.loop.create_task(self.check_date())
+
+    def cog_unload(self):
+        self.task.cancel()
 
     async def check_date(self):
-        while True:
-            # wait until it's 8AM
-            now = datetime.now()
-            if now.hour < 8:
-                to_wait = (8 - now.hour) * 3600
-            else:
-                to_wait = (24 - now.hour + 8) * 3600
-            await asyncio.sleep(to_wait)
+        await self.announce_date()  # Immediately announce the date after bot starts
 
-            # Get today's date
+        while True:
+            now = datetime.now()
+            next_time = now.replace(hour=8, minute=0, second=0)
+            if now.hour >= 8:
+                next_time += timedelta(days=1)
+            to_wait = (next_time - now).seconds
+            await asyncio.sleep(to_wait)
+            await self.announce_date()
+
+    async def announce_date(self, test_date=datetime.date(2023, 1, 6)):
+        # If you're testing using a specific date
+        if test_date:
+            today = test_date
+        else:
             today = datetime.now().date()
 
             # Calculate the dates of the movable feasts for this year
