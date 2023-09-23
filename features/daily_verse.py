@@ -6,17 +6,15 @@ from datetime import datetime, timedelta
 
 class DailyVerses(commands.Cog):
 
-    def __init__(self, bot):
+    def __init__(self, bot, config):
         self.bot = bot
+        self.config = config
         self.load_verses()
         self.send_daily_verse.start()
 
-    def cog_unload(self):
-        self.send_daily_verse.cancel()
-
     def load_verses(self):
         try:
-            with open('files/en_kjv.json', 'r', encoding='utf-8-sig') as f:
+            with open(self.config['verses'], 'r', encoding='utf-8-sig') as f:
                 self.books = json.load(f)
         except FileNotFoundError:
             print('File not found')
@@ -28,7 +26,6 @@ class DailyVerses(commands.Cog):
         chapter_number = random.choice(range(len(book['chapters'])))
         chapter = book['chapters'][chapter_number]
         verse = random.choice(chapter)
-        # Return formatted verse
         return f"{book['name']} {chapter_number+1}:{chapter.index(verse)+1}\n\n*{verse}*"
 
     @commands.command()
@@ -46,6 +43,6 @@ class DailyVerses(commands.Cog):
     async def before_send_daily_verse(self):
         now = datetime.now()
         future = datetime.now().replace(hour=8)
-        if now.hour >= 8:   # if it's past 8 AM, schedule for next day
+        if now.hour >= 11:   # if it's past 11 AM, schedule for next day
             future += timedelta(days=1)
-        await discord.utils.sleep_until(future)  # wait until the specified time
+        await discord.utils.sleep_until(future)

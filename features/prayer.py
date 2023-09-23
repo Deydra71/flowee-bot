@@ -5,12 +5,13 @@ import random
 
 # Possible categories: Efisio, healing, family, strength, protection, morning, forgiveness, thankfulness, guidance, peace, gratitude, wisdom, hope, purity, serenity, joy, faith, courage, patience, love
 class Prayer(commands.Cog):
-    def __init__(self, bot):
+    def __init__(self, bot, config):
         self.bot = bot
-        with open('files/prayers.json', 'r', encoding='utf-8') as f:
+        self.config = config
+        with open(self.config['prayers'], 'r', encoding='utf-8-sig') as f:
             self.prayers = json.load(f)
         self.prayers_left = {prayer['prayer_name'].split('_')[0]: [] for prayer in self.prayers}
-    
+
     @commands.command()
     async def prayer(self, ctx, prayer_name=None):
         if prayer_name is None:
