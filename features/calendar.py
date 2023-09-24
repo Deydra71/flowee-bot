@@ -1,5 +1,5 @@
 from discord.ext import commands
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 from dateutil.easter import easter
 import discord
 import asyncio
@@ -26,7 +26,7 @@ class ChristianCalendar(commands.Cog):
             await asyncio.sleep(to_wait)
             await self.announce_date()
 
-    async def announce_date(self, test_date=datetime.date(2023, 1, 6)):
+    async def announce_date(self, test_date=date(2023, 1, 6)):
         # If you're testing using a specific date
         if test_date:
             today = test_date
