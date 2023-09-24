@@ -1,7 +1,6 @@
 from discord.ext import commands
 from datetime import datetime, timedelta, date
 from dateutil.easter import easter
-import discord
 import asyncio
 
 CHANNEL_ID = 1117869477669916803
@@ -17,8 +16,37 @@ class ChristianCalendar(commands.Cog):
 
     async def check_date(self):
         print("[DEBUG] Inside check_date method")  # Debug print
-        await self.announce_date(2023, 1, 6)  # Immediately announce the date after bot starts
 
+        # Immediately announce all defined dates after bot starts for testing
+        current_year = datetime.now().year
+
+        # Movable feast dates
+        await self.announce_date(current_year, easter(current_year).month, easter(current_year).day)
+        await self.announce_date(current_year, (easter(current_year) - timedelta(days=46)).month, (easter(current_year) - timedelta(days=46)).day)
+        await self.announce_date(current_year, (easter(current_year) - timedelta(days=7)).month, (easter(current_year) - timedelta(days=7)).day)
+        await self.announce_date(current_year, (easter(current_year) - timedelta(days=2)).month, (easter(current_year) - timedelta(days=2)).day)
+        await self.announce_date(current_year, (easter(current_year) + timedelta(days=39)).month, (easter(current_year) + timedelta(days=39)).day)
+        await self.announce_date(current_year, (easter(current_year) + timedelta(days=49)).month, (easter(current_year) + timedelta(days=49)).day)
+        await self.announce_date(current_year, (easter(current_year) + timedelta(days=60)).month, (easter(current_year) + timedelta(days=60)).day)
+
+        # Fixed holidays
+        fixed_holidays_dates = [
+            (1, 6),
+            (2, 2),
+            (2, 14),
+            (3, 25),
+            (6, 26),
+            (10, 4),
+            (10, 31),
+            (11, 1),
+            (11, 2),
+            (12, 25),
+            (12, 26)
+        ]
+        for date in fixed_holidays_dates:
+            await self.announce_date(current_year, date[0], date[1])
+
+        # Now let the bot proceed to its usual behavior of checking dates daily
         while True:
             now = datetime.now()
             next_time = now.replace(hour=8, minute=0, second=0)
@@ -29,21 +57,15 @@ class ChristianCalendar(commands.Cog):
             await asyncio.sleep(to_wait)
             await self.announce_date()
 
-
-    async def announce_date(self, year=None, month=None, day=None):  
+    async def announce_date(self, year=None, month=None, day=None): 
         print("[DEBUG] Inside announce_date method")  # Debug print
-        try:
-            if year and month and day:
-                today = date(year, month, day)
-            else:
-                today = datetime.now().date()
-            
-            print(f"[DEBUG] Today's date is: {today}")  # Debug print
-        except  Exception as e:
-            print(f"[ERROR] An error occurred in announce_date: {e}")
 
-        # The rest of the calculations should be done irrespective of whether test_date is given or not
-        # So, move them outside the conditional block
+        if year and month and day:
+            today = date(year, month, day)
+        else:
+            today = datetime.now().date()
+        
+        print(f"[DEBUG] Today's date is: {today}")  # Debug print
 
         # Calculate the dates of the movable feasts for this year
         easter_date = easter(today.year)
@@ -83,8 +105,8 @@ class ChristianCalendar(commands.Cog):
         elif today == pentecost_date:
             await self.bot.get_channel(CHANNEL_ID).send(":star2: **TODAY IS A SPECIAL DAY** :star2:\nToday is Pentecost - Celebrates the descent of the Holy Spirit upon the Apostles and other followers of Jesus.")
         elif today == corpus_christi_date:
-            await self.bot.get_channel(CHANNEL_ID).send(":star2: **TODAY IS A SPECIAL DAY** :star2:\nToday is Corpus Christi - Solemn commemoration of the institution of the Eucharist.")
-        elif (today.month, today.day) in fixed_holidays:
-            # If today's date matches a key in the fixed_holidays dictionary, send that message
-            await self.bot.get_channel(CHANNEL_ID).send(f":star2: **TODAY IS A SPECIAL DAY** :star2:\nToday is {fixed_holidays[(today.month, today.day)]}")
-
+            await self.bot.get_channel(CHANNEL_ID).send(":star2: **TODAY IS A SPECIAL DAY** :star2:\nToday is Corpus Christi - Honors the Holy Eucharist and the real presence of the body and blood of Jesus Christ.")
+        elif today in fixed_holidays:
+            await self.bot.get_channel(CHANNEL_ID).send(f":star2: **TODAY IS A SPECIAL DAY** :star2:\nToday is {fixed_holidays[today]}")
+        else:
+            print("[DEBUG] Today is not a special day")  # Debug print
