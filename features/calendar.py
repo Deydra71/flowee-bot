@@ -8,72 +8,27 @@ CHANNEL_ID = 1155508025394745364
 class ChristianCalendar(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        print("[DEBUG] Initializing ChristianCalendar")  # Debug print
         self.task = self.bot.loop.create_task(self.check_date())
 
     def cog_unload(self):
         self.task.cancel()
 
     async def check_date(self):
-        print("[DEBUG] Inside check_date method")  # Debug print
-
-        # Immediately announce all defined dates after bot starts for testing
-        current_year = datetime.now().year
-
-        # Movable feast dates
-        movable_dates = [
-            easter(current_year),
-            easter(current_year) - timedelta(days=46),
-            easter(current_year) - timedelta(days=7),
-            easter(current_year) - timedelta(days=2),
-            easter(current_year) + timedelta(days=39),
-            easter(current_year) + timedelta(days=49),
-            easter(current_year) + timedelta(days=60)
-        ]
-        
-        for movable_date in movable_dates:
-            await self.announce_date(movable_date.year, movable_date.month, movable_date.day)
-
-        # Fixed holidays
-        fixed_holidays_dates = [
-            (1, 6),
-            (2, 2),
-            (2, 14),
-            (3, 25),
-            (6, 26),
-            (10, 4),
-            (10, 31),
-            (11, 1),
-            (11, 2),
-            (12, 25),
-            (12, 26)
-        ]
-        
-        for date in fixed_holidays_dates:
-            await self.announce_date(current_year, date[0], date[1])
-
-        # Now let the bot proceed to its usual behavior of checking dates daily
         while True:
             now = datetime.now()
             next_time = now.replace(hour=8, minute=0, second=0)
             if now.hour >= 8:
                 next_time += timedelta(days=1)
             to_wait = (next_time - now).seconds
-            print(f"[DEBUG] Sleeping for {to_wait} seconds")  # Debug print
             await asyncio.sleep(to_wait)
             await self.announce_date()
 
-
-    async def announce_date(self, year=None, month=None, day=None): 
-        print("[DEBUG] Inside announce_date method")  # Debug print
-
+    async def announce_date(self, year=None, month=None, day=None):
         if year and month and day:
             today = date(year, month, day)
         else:
             today = datetime.now().date()
         
-        print(f"[DEBUG] Today's date is: {today}")  # Debug print
-
         # Calculate the dates of the movable feasts for this year
         easter_date = easter(today.year)
         ash_wednesday_date = easter_date - timedelta(days=46)
@@ -116,4 +71,4 @@ class ChristianCalendar(commands.Cog):
         elif today in fixed_holidays:
             await self.bot.get_channel(CHANNEL_ID).send(f":star2: **TODAY IS A SPECIAL DAY** :star2:\nToday is {fixed_holidays[today]}")
         else:
-            print("[DEBUG] Today is not a special day")  # Debug print
+            print("[DEBUG] Today is not a special day")
