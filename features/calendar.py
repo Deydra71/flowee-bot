@@ -29,6 +29,7 @@ class ChristianCalendar(commands.Cog):
             await asyncio.sleep(to_wait)
             await self.announce_date()
 
+
     async def announce_date(self, test_date=None): 
         print("[DEBUG] Inside announce_date method")  # Debug print
 
