@@ -9,12 +9,14 @@ CHANNEL_ID = 1117869477669916803
 class ChristianCalendar(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        print("[DEBUG] Initializing ChristianCalendar")  # Debug print
         self.task = self.bot.loop.create_task(self.check_date())
 
     def cog_unload(self):
         self.task.cancel()
 
     async def check_date(self):
+        print("[DEBUG] Inside check_date method")  # Debug print
         await self.announce_date()  # Immediately announce the date after bot starts
 
         while True:
@@ -23,14 +25,19 @@ class ChristianCalendar(commands.Cog):
             if now.hour >= 8:
                 next_time += timedelta(days=1)
             to_wait = (next_time - now).seconds
+            print(f"[DEBUG] Sleeping for {to_wait} seconds")  # Debug print
             await asyncio.sleep(to_wait)
             await self.announce_date()
 
-    async def announce_date(self, test_date=None):  # Change the default value of test_date to None
+    async def announce_date(self, test_date=None): 
+        print("[DEBUG] Inside announce_date method")  # Debug print
+
         if test_date:
             today = test_date
         else:
             today = datetime.now().date()
+        
+        print(f"[DEBUG] Today's date is: {today}")  # Debug print
 
         # The rest of the calculations should be done irrespective of whether test_date is given or not
         # So, move them outside the conditional block
