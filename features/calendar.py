@@ -40,35 +40,35 @@ class ChristianCalendar(commands.Cog):
 
         # Define fixed holidays
         fixed_holidays = {
-            (1, 6): "Epiphany - Celebrates the revelation of God incarnate as Jesus Christ.",
-            (2, 2): "Candlemas - Feast of the Presentation of Jesus Christ and Feast of the Purification of the Blessed Virgin Mary.",
-            (2, 14): "St. Valentine's Day - An observance of love and affection.",
-            (3, 25): "Annunciation - Celebrates the visit of the Archangel Gabriel to the Virgin Mary, during which she agreed to become the Mother of Jesus.",
-            (6, 26): "Assumption of Mary - Observes the bodily taking up of the Virgin Mary into Heaven at the end of her earthly life.",
-            (10, 4): "St. Francis Day - Honors St. Francis of Assisi, the patron saint of animals and the environment.",
-            (10, 31): "All Hallows Eve - The day before All Saints' Day, often celebrating the lives of saints and deceased loved ones.",
-            (11, 1): "All Saints' Day - Honors all saints and martyrs, both known and unknown.",
-            (11, 2): "All Souls' Day - Commemorates all faithful Christians who have died but not yet reached heaven.",
-            (12, 25): "Christmas - Celebrating the birth of Jesus Christ, the son of God.",
-            (12, 26): "St. Stephen's Day - Honors St. Stephen, the first Christian martyr."
+            (1, 6): "*Epiphany*\n Celebrates the revelation of God incarnate as Jesus Christ.",
+            (2, 2): "*Candlemas*\n Feast of the Presentation of Jesus Christ and Feast of the Purification of the Blessed Virgin Mary.",
+            (2, 14): "*St. Valentine's Day*\n An observance of love and affection.",
+            (3, 25): "*Annunciation*\n Celebrates the visit of the Archangel Gabriel to the Virgin Mary, during which she agreed to become the Mother of Jesus.",
+            (6, 26): "*Assumption of Mary*\n Observes the bodily taking up of the Virgin Mary into Heaven at the end of her earthly life.",
+            (10, 4): "*St. Francis Day*\n Honors St. Francis of Assisi, the patron saint of animals and the environment.",
+            (10, 31): "*All Hallows Eve*\n The day before All Saints' Day, often celebrating the lives of saints and deceased loved ones.",
+            (11, 1): "*All Saints' Day*\n Honors all saints and martyrs, both known and unknown.",
+            (11, 2): "*All Souls' Day*\n Commemorates all faithful Christians who have died but not yet reached heaven.",
+            (12, 25): "*Christmas*\n Celebrating the birth of Jesus Christ, the son of God.",
+            (12, 26): "*St. Stephen's Day*\n Honors St. Stephen, the first Christian martyr."
         }
 
         # Check if today is any of the movable feast dates and send the appropriate message
         if today == easter_date:
-            await self.bot.get_channel(CHANNEL_ID).send(":star2: **TODAY IS A SPECIAL DAY** :star2:\nToday is Easter - Celebrating the resurrection of Jesus Christ from the dead.")
+            await self.bot.get_channel(CHANNEL_ID).send(":star2: **TODAY IS A SPECIAL DAY** :star2:\n\nToday is *Easter*\n Celebrating the resurrection of Jesus Christ from the dead.")
         elif today == good_friday_date:
-            await self.bot.get_channel(CHANNEL_ID).send(":star2: **TODAY IS A SPECIAL DAY** :star2:\nToday is Good Friday - Commemorating the crucifixion of Jesus Christ and his death at Calvary.")
+            await self.bot.get_channel(CHANNEL_ID).send(":star2: **TODAY IS A SPECIAL DAY** :star2:\n\nToday is *Good Friday*\n Commemorating the crucifixion of Jesus Christ and his death at Calvary.")
         elif today == palm_sunday_date:
-            await self.bot.get_channel(CHANNEL_ID).send(":star2: **TODAY IS A SPECIAL DAY** :star2:\nToday is Palm Sunday - Commemorates Jesus's triumphant entry into Jerusalem.")
+            await self.bot.get_channel(CHANNEL_ID).send(":star2: **TODAY IS A SPECIAL DAY** :star2:\n\nToday is *Palm Sunday*\n Commemorates Jesus's triumphant entry into Jerusalem.")
         elif today == ash_wednesday_date:
-            await self.bot.get_channel(CHANNEL_ID).send(":star2: **TODAY IS A SPECIAL DAY** :star2:\nToday is Ash Wednesday - Marks the start of the Lenten period of fasting and penance.")
+            await self.bot.get_channel(CHANNEL_ID).send(":star2: **TODAY IS A SPECIAL DAY** :star2:\n\nToday is *Ash Wednesday*\n Marks the start of the Lenten period of fasting and penance.")
         elif today == ascension_date:
-            await self.bot.get_channel(CHANNEL_ID).send(":star2: **TODAY IS A SPECIAL DAY** :star2:\nToday is Ascension Day - Celebrates the Ascension of Jesus Christ into heaven.")
+            await self.bot.get_channel(CHANNEL_ID).send(":star2: **TODAY IS A SPECIAL DAY** :star2:\n\nToday is *Ascension Day*\n Celebrates the Ascension of Jesus Christ into heaven.")
         elif today == pentecost_date:
-            await self.bot.get_channel(CHANNEL_ID).send(":star2: **TODAY IS A SPECIAL DAY** :star2:\nToday is Pentecost - Celebrates the descent of the Holy Spirit upon the Apostles and other followers of Jesus.")
+            await self.bot.get_channel(CHANNEL_ID).send(":star2: **TODAY IS A SPECIAL DAY** :star2:\n\nToday is *Pentecost*\n Celebrates the descent of the Holy Spirit upon the Apostles and other followers of Jesus.")
         elif today == corpus_christi_date:
-            await self.bot.get_channel(CHANNEL_ID).send(":star2: **TODAY IS A SPECIAL DAY** :star2:\nToday is Corpus Christi - Honors the Holy Eucharist and the real presence of the body and blood of Jesus Christ.")
-        elif today in fixed_holidays:
-            await self.bot.get_channel(CHANNEL_ID).send(f":star2: **TODAY IS A SPECIAL DAY** :star2:\nToday is {fixed_holidays[today]}")
+            await self.bot.get_channel(CHANNEL_ID).send(":star2: **TODAY IS A SPECIAL DAY** :star2:\n\nToday is *Corpus Christi*\n Honors the Holy Eucharist and the real presence of the body and blood of Jesus Christ.")
+        elif (today.month, today.day) in fixed_holidays:
+            await self.bot.get_channel(CHANNEL_ID).send(f":star2: **TODAY IS A SPECIAL DAY** :star2:\n\nToday is {fixed_holidays[today.month, today.day]}")
         else:
             print("[DEBUG] Today is not a special day")
