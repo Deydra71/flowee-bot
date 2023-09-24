@@ -17,7 +17,7 @@ class ChristianCalendar(commands.Cog):
 
     async def check_date(self):
         print("[DEBUG] Inside check_date method")  # Debug print
-        await self.announce_date()  # Immediately announce the date after bot starts
+        await self.announce_date(2023, 1, 6)  # Immediately announce the date after bot starts
 
         while True:
             now = datetime.now()
