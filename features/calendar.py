@@ -30,15 +30,17 @@ class ChristianCalendar(commands.Cog):
             await self.announce_date()
 
 
-    async def announce_date(self, test_date=None): 
+    async def announce_date(self, year=None, month=None, day=None):  
         print("[DEBUG] Inside announce_date method")  # Debug print
-
-        if test_date:
-            today = test_date
-        else:
-            today = datetime.now().date()
-        
-        print(f"[DEBUG] Today's date is: {today}")  # Debug print
+        try:
+            if year and month and day:
+                today = date(year, month, day)
+            else:
+                today = datetime.now().date()
+            
+            print(f"[DEBUG] Today's date is: {today}")  # Debug print
+        except  Exception as e:
+            print(f"[ERROR] An error occurred in announce_date: {e}")
 
         # The rest of the calculations should be done irrespective of whether test_date is given or not
         # So, move them outside the conditional block
