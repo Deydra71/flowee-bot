@@ -3,7 +3,7 @@ from datetime import datetime, timedelta, date
 from dateutil.easter import easter
 import asyncio
 
-CHANNEL_ID = 1117869477669916803
+CHANNEL_ID = 1155508025394745364
 
 class ChristianCalendar(commands.Cog):
     def __init__(self, bot):
@@ -21,13 +21,18 @@ class ChristianCalendar(commands.Cog):
         current_year = datetime.now().year
 
         # Movable feast dates
-        await self.announce_date(current_year, easter(current_year).month, easter(current_year).day)
-        await self.announce_date(current_year, (easter(current_year) - timedelta(days=46)).month, (easter(current_year) - timedelta(days=46)).day)
-        await self.announce_date(current_year, (easter(current_year) - timedelta(days=7)).month, (easter(current_year) - timedelta(days=7)).day)
-        await self.announce_date(current_year, (easter(current_year) - timedelta(days=2)).month, (easter(current_year) - timedelta(days=2)).day)
-        await self.announce_date(current_year, (easter(current_year) + timedelta(days=39)).month, (easter(current_year) + timedelta(days=39)).day)
-        await self.announce_date(current_year, (easter(current_year) + timedelta(days=49)).month, (easter(current_year) + timedelta(days=49)).day)
-        await self.announce_date(current_year, (easter(current_year) + timedelta(days=60)).month, (easter(current_year) + timedelta(days=60)).day)
+        movable_dates = [
+            easter(current_year),
+            easter(current_year) - timedelta(days=46),
+            easter(current_year) - timedelta(days=7),
+            easter(current_year) - timedelta(days=2),
+            easter(current_year) + timedelta(days=39),
+            easter(current_year) + timedelta(days=49),
+            easter(current_year) + timedelta(days=60)
+        ]
+        
+        for movable_date in movable_dates:
+            await self.announce_date(movable_date.year, movable_date.month, movable_date.day)
 
         # Fixed holidays
         fixed_holidays_dates = [
@@ -43,6 +48,7 @@ class ChristianCalendar(commands.Cog):
             (12, 25),
             (12, 26)
         ]
+        
         for date in fixed_holidays_dates:
             await self.announce_date(current_year, date[0], date[1])
 
@@ -56,6 +62,7 @@ class ChristianCalendar(commands.Cog):
             print(f"[DEBUG] Sleeping for {to_wait} seconds")  # Debug print
             await asyncio.sleep(to_wait)
             await self.announce_date()
+
 
     async def announce_date(self, year=None, month=None, day=None): 
         print("[DEBUG] Inside announce_date method")  # Debug print
