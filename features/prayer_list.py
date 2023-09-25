@@ -50,11 +50,7 @@ class PrayerList(commands.Cog):
         self.unused_prayers.remove(prayer_for_today)
         return prayer_for_today
 
-    @commands.group(invoke_without_command=True)
-    async def join(self, ctx):
-        pass
-
-    @join.command(name="prayer list")
+    @commands.command(name="join prayer list")
     async def join_prayer_list(self, ctx):
         print("Join prayer list command invoked.")  # Debugging print statement
         if ctx.author not in self.prayer_list:
@@ -64,11 +60,7 @@ class PrayerList(commands.Cog):
         else:
             await ctx.send(f"{ctx.author.mention}, you're already in the prayer list.")
 
-    @commands.group(invoke_without_command=True)
-    async def leave(self, ctx):
-        pass
-
-    @leave.command(name="prayer list")
+    @commands.command(name="leave prayer list")
     async def leave_prayer_list(self, ctx):
         print("Leave prayer list command invoked.")  # Debugging print statement
         if ctx.author in self.prayer_list:
