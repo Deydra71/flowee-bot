@@ -27,8 +27,8 @@ class Help(commands.Cog):
         \t:bulb: Example: `!prayer guidance`.
 
         :dove: **Prayer List**: You can join or leave the prayer list. When you are in the prayer list, your username will be included in our daily prayers.
-        \t To join the prayer list, use the command `!join_prayer_list`.
-        \t To leave the prayer list, use the command `!leave_prayer_list`.
+        \t To join the prayer list, use the command `!join prayer list`.
+        \t To leave the prayer list, use the command `!leave prayer list`.
 
         :earth_africa: **Additional Resources**: If you are looking for resources for your Walk in Christ, command me with `!resources`, and I will print them for you!  :white_heart:
 

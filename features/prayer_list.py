@@ -50,7 +50,7 @@ class PrayerList(commands.Cog):
         self.unused_prayers.remove(prayer_for_today)
         return prayer_for_today
 
-    @commands.command()
+    @commands.command(name="join prayer list")
     async def join_prayer_list(self, ctx):
         if ctx.author not in self.prayer_list:
             self.prayer_list.append(ctx.author)
@@ -59,7 +59,7 @@ class PrayerList(commands.Cog):
         else:
             await ctx.send(f"{ctx.author.mention}, you're already in the prayer list.")
 
-    @commands.command()
+    @commands.command(name="leave prayer list")
     async def leave_prayer_list(self, ctx):
         if ctx.author in self.prayer_list:
             self.prayer_list.remove(ctx.author)
