@@ -56,6 +56,7 @@ class PrayerList(commands.Cog):
 
     @join.command(name="prayer list")
     async def join_prayer_list(self, ctx):
+        print("Join prayer list command invoked.")  # Debugging print statement
         if ctx.author not in self.prayer_list:
             self.prayer_list.append(ctx.author)
             self.save_prayer_list()
@@ -69,6 +70,7 @@ class PrayerList(commands.Cog):
 
     @leave.command(name="prayer list")
     async def leave_prayer_list(self, ctx):
+        print("Leave prayer list command invoked.")  # Debugging print statement
         if ctx.author in self.prayer_list:
             self.prayer_list.remove(ctx.author)
             self.save_prayer_list()
