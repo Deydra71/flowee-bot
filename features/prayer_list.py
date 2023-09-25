@@ -69,6 +69,10 @@ class PrayerList(commands.Cog):
             await ctx.send(f"{ctx.author.mention} has been removed from the prayer list.")
         else:
             await ctx.send(f"{ctx.author.mention}, you're not in the prayer list.")
+    
+    @commands.command()
+    async def test_prayer(self, ctx):
+        await ctx.send("Prayer cog is working!")
 
     @tasks.loop(hours=24)
     async def send_prayer(self):
