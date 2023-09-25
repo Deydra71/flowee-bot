@@ -42,7 +42,7 @@ async def on_ready():
     await bot.add_cog(Trivia(bot, config))
     bot.remove_command('help')
     await bot.add_cog(Help(bot))
-    bot.add_cog(PrayerList(bot, config))
+    await bot.add_cog(PrayerList(bot, config))
     await bot.add_cog(ChristianCalendar(bot))
 
 @bot.event
