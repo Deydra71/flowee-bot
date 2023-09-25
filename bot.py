@@ -45,6 +45,13 @@ async def on_ready():
     await bot.add_cog(Resources(bot))
     await bot.add_cog(PrayerList(bot, config))
     await bot.add_cog(ChristianCalendar(bot))
+
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.send(f"Command not found: {ctx.message.content}. Please use a valid command.")
+    else:
+        raise error
     
     # # Test all announcements for the entire year
     # calendar_cog = bot.get_cog("ChristianCalendar")
