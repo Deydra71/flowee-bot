@@ -2,7 +2,7 @@
 
 ## *A Little Companion on your Journey of Faith*
 
-Welcome to **FloweeBot**, a Bible Discord bot for everyone who wishes to turn their heart towards God. Originally created for the [Efisio Cross Discord server](https://discord.com/invite/7KYCnd2nXU), FloweeBot is designed to provide daily verses, prayer generation, and Bible Trivia, and more to aid in your spiritual journey. 
+Welcome to **FloweeBot**, a Bible Discord bot for everyone who wishes to turn their heart towards God, FloweeBot is designed to provide daily verses, prayer generation, and Bible Trivia, and more to aid in your spiritual journey. 
 
 ### **:musical_note: Efisio Cross :musical_note:**
 
