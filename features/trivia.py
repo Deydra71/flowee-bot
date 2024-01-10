@@ -4,7 +4,7 @@ import random
 import json
 import asyncio
 
-TRIVIA_CHANNEL_ID = 1120358578256093385  # Please replace with your designated channel ID
+#TRIVIA_CHANNEL_ID = 1120358578256093385  # Please replace with your designated channel ID
 
 class Trivia(commands.Cog):
     def __init__(self, bot, config):
@@ -42,9 +42,9 @@ class Trivia(commands.Cog):
 
     @commands.command()
     async def trivia(self, ctx, level: int, *members: discord.Member):
-        if not ctx.message.channel.id == self.config['trivia_channel_id']:
-            await ctx.send('Please use the trivia channel to start a trivia game!')
-            return
+       # if not ctx.message.channel.id == self.config['trivia_channel_id']:
+           # await ctx.send('Please use the trivia channel to start a trivia game!')
+           # return
         self.players = list(members)
         self.channel = ctx.channel
         self.scores = {member: 0 for member in members}
